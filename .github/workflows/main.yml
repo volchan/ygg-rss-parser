@@ -58,5 +58,5 @@ jobs:
         cache: 'pnpm'
     - name: install
       run: pnpm install
-    - name: Prettier
+    - name: Depcheck
       run: pnpm depcheck
