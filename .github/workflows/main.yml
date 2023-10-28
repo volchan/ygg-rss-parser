@@ -67,5 +67,5 @@ jobs:
       - name: Push to dokku
         uses: dokku/github-action@master
         with:
-          git_remote_url: 'ssh://${{secrets.DOKKU_HOST}}/appname'
+          git_remote_url: 'ssh://${{secrets.DOKKU_HOST}}/ygg-rss-parser'
           ssh_private_key: ${{ secrets.DOKKU_SSH_PRIVATE_KEY }}
