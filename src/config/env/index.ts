@@ -1,24 +1,35 @@
+import fs from 'fs'
 import dotenv from 'dotenv'
 import dotenvParseVariable from 'dotenv-parse-variables'
-import fs from 'fs'
 
-import { type RequiredConfig, appConfigSchema } from './types'
-
-export function defineConfig(config: RequiredConfig) {
-  return appConfigSchema.safeParse(config)
-}
+import { appConfigSchema } from './types'
 
 import { logger } from '@utils/logger'
 
-function loadEnv() {
-  dotenv.config()
+const parseEnv = () => {
   const env = process.env.APP_ENV || 'development'
-  const envPath = `.env.${env}`
-  logger.info(`🔃 Loading environment variables from ${envPath} file`)
-  const envConfig = dotenv.parse(fs.readFileSync(envPath))
 
-  logger.info(`🔃 Parsing environment variables from ${envPath} file`)
-  const parsedEnv = appConfigSchema.safeParse(dotenvParseVariable(envConfig))
+  if (env === 'development') {
+    logger.info(`🔃 Loading environment variables from .env file`)
+    return dotenv.parse(fs.readFileSync('.env'))
+  } else {
+    logger.info(`🔃 Loading environment variables from process.env`)
+    const typeKeys = Object.keys(appConfigSchema.shape)
+
+    return Array.from(typeKeys).reduce((acc: dotenv.DotenvParseOutput, key) => {
+      const value = process.env[key]
+      if (value) {
+        acc[key] = value
+      }
+      return acc
+    }, {})
+  }
+}
+
+const loadEnv = () => {
+  dotenv.config()
+
+  const parsedEnv = appConfigSchema.safeParse(dotenvParseVariable(parseEnv()))
 
   if (!parsedEnv.success) {
     logger.error('❌ Invalid environment variables')
