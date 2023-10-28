@@ -1,4 +1,5 @@
 import axios from 'axios'
+import helmet from 'helmet'
 import express, { Request, Response } from 'express'
 import { parse as pttParse, DefaultParserResult } from 'parse-torrent-title'
 import { XMLParser } from 'fast-xml-parser'
@@ -7,6 +8,8 @@ import { appEnv } from './config/env'
 import { loggerConfig, logger } from '@utils/logger'
 
 const app = express()
+
+app.use(helmet())
 
 const axiosInstance = axios.create({
   baseURL: appEnv.FLARE_SOLVER_BASE_URL,
