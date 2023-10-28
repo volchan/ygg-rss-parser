@@ -1,0 +1,62 @@
+name: main
+# Controls when the workflow will run
+on:
+  push:
+    branches:
+      - develop
+  pull_request:
+
+  workflow_dispatch:
+
+env:
+  NODE_VERSION: 18.18.2
+  PNPM_VERSION: 8.10.0
+
+jobs:
+  eslint:
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v4
+    - uses: pnpm/action-setup@v2
+      with:
+        version: ${{ env.PNPM_VERSION }}
+    - uses: actions/setup-node@v3
+      with:
+        node-version: ${{ env.NODE_VERSION }}
+        cache: 'pnpm'
+    - name: install
+      run: pnpm install
+    - name: ESLint
+      run: pnpm eslint
+
+  prettier:
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v4
+    - uses: pnpm/action-setup@v2
+      with:
+        version: ${{ env.PNPM_VERSION }}
+    - uses: actions/setup-node@v3
+      with:
+        node-version: ${{ env.NODE_VERSION }}
+        cache: 'pnpm'
+    - name: install
+      run: pnpm install
+    - name: Prettier
+      run: pnpm prettier
+  
+  depcheck:
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v4
+    - uses: pnpm/action-setup@v2
+      with:
+        version: ${{ env.PNPM_VERSION }}
+    - uses: actions/setup-node@v3
+      with:
+        node-version: ${{ env.NODE_VERSION }}
+        cache: 'pnpm'
+    - name: install
+      run: pnpm install
+    - name: Depcheck
+      run: pnpm depcheck

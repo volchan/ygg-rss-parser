@@ -3,11 +3,19 @@
   "version": "1.0.0",
   "description": "",
   "main": "index.js",
+  "packageManager": "pnpm@8.10.0",
   "scripts": {
     "start": "nodemon -r tsconfig-paths/register src/index.ts",
-    "build": "pnpmx tsc tsc-alias -p tsconfig.json",
+    "build": "pnpx tsc tsc-alias -p tsconfig.json",
     "serve": "node dist/index.js",
-    "prepare": "husky install"
+    "prepare": "husky install",
+    "depcheck": "pnpx depcheck",
+    "lint": "pnpm eslint && pnpm prettier",
+    "lint:fix": "pnpm eslint:fix && pnpm prettier:fix",
+    "eslint": "eslint --ext .js,.ts,.jsx,.tsx",
+    "eslint:fix": "eslint --fix --ext .js,.ts,.jsx,.tsx",
+    "prettier": "prettier --check './**/*.{js,jsx,ts,tsx}'",
+    "prettier:fix": "prettier --write './**/*.{js,jsx,ts,tsx}'"
   },
   "keywords": [],
   "author": "",
@@ -18,16 +26,18 @@
     "@typescript-eslint/eslint-plugin": "^6.9.0",
     "@typescript-eslint/parser": "^6.9.0",
     "eslint-config-airbnb-typescript": "^17.1.0",
+    "eslint-config-prettier": "^9.0.0",
+    "eslint-plugin-import": "^2.29.0",
     "husky": "^8.0.0",
     "lint-staged": "^15.0.2",
     "nodemon": "^3.0.1",
+    "prettier": "^3.0.3",
     "ts-node": "^10.9.1",
     "tsconfig-paths": "^4.2.0",
     "typescript": "^5.2.2"
   },
   "dependencies": {
     "@types/dotenv-parse-variables": "^2.0.2",
-    "@types/morgan": "^1.9.7",
     "axios": "^1.6.0",
     "dotenv": "^16.3.1",
     "dotenv-parse-variables": "^2.0.0",
@@ -37,7 +47,6 @@
     "parse-torrent-title": "^1.3.0",
     "pino-http": "^8.5.0",
     "pino-pretty": "^10.2.3",
-    "ts-transformer-keys": "^0.4.4",
     "tsc-alias": "^1.8.8",
     "zod": "^3.22.4"
   }

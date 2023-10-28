@@ -1,0 +1,8 @@
+ignores: [
+  "pino-pretty",
+  "lint-staged",
+  "ts-node",
+  "tsconfig-paths"
+]
+
+skip-missing: true
