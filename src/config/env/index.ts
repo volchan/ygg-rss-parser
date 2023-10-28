@@ -14,8 +14,8 @@ const parseEnv = () => {
     return dotenv.parse(fs.readFileSync('.env'))
   } else {
     logger.info(`🔃 Loading environment variables from process.env`)
-    const typeKeys = Object.keys(appConfigSchema)
-    logger.info(typeKeys)
+    const typeKeys = Object.keys(appConfigSchema.shape)
+
     return Array.from(typeKeys).reduce((acc: dotenv.DotenvParseOutput, key) => {
       const value = process.env[key]
       if (value) {
