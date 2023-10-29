@@ -6,7 +6,7 @@
   "packageManager": "pnpm@8.10.0",
   "engines": {
     "node": "18.18.2",
-    "pnpm": "8.10.0"
+    "pnpm": "^8"
   },
   "scripts": {
     "start": "nodemon -r tsconfig-paths/register src/index.ts",
