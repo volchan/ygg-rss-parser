@@ -1,0 +1,54 @@
+version: "3"
+
+name: ygg-rss-parser
+services:
+  server:
+    build:
+      context: .
+      target: production
+    container_name: server
+    command: ["pnpm", "start"]
+    ports:
+      - 3000:3000
+    env_file:
+      - .env
+    volumes:
+      - .:/app
+      - ./node_modules:/app/node_modules:delegate
+
+  sonarqube:
+    image: sonarqube:community
+    container_name: sonarqube
+    depends_on:
+      - db
+    environment:
+      SONAR_JDBC_URL: jdbc:postgresql://db/sonar
+      SONAR_JDBC_USERNAME: sonartest
+      SONAR_JDBC_PASSWORD: sonartest
+    volumes:
+      - .sonarqube/data:/opt/SonarQube/data
+      - .sonarqube/extensions:/opt/SonarQube/extensions
+      - .sonarqube/logs:/opt/SonarQube/logs
+    ports:
+      - 9000:9000
+  db:
+    image: postgres:16
+    container_name: sonarqube-db
+    environment:
+      POSTGRES_USER: sonartest
+      POSTGRES_PASSWORD: sonartest
+      POSTGRES_DB: sonar
+    volumes:
+      - .postgresql:/var/lib/postgresql
+
+  sonar-scanner:
+    image: sonarsource/sonar-scanner-cli
+    container_name: sonar-scanner
+    restart: no
+    environment:
+      SONAR_HOST_URL: http://sonarqube:9000
+      SONAR_SCANNER_OPTS: -Dsonar.projectKey=ygg-rss-parser
+      SONAR_TOKEN: ${SONARQUBE_TOKEN}
+    volumes:
+      - .:/ygg-rss-parser
+    working_dir: /ygg-rss-parser

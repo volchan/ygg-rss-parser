@@ -43,3 +43,7 @@ dist/
 *.njsproj
 *.sln
 *.sw*
+
+.sonarqube
+.postgresql
+.scannerwork

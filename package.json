@@ -9,7 +9,7 @@
     "pnpm": "8.10.0"
   },
   "scripts": {
-    "start": "nodemon -r tsconfig-paths/register src/index.ts",
+    "start": "nodemon -r tsconfig-paths/register -e ts,json,pug src/index.ts",
     "build": "rimraf ./dist && tsc --project tsconfig.json && tsc-alias -p tsconfig.json && tscp",
     "serve": "node dist/index.js",
     "prepare": "pnpx husky install",

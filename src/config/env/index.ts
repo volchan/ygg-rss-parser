@@ -7,7 +7,8 @@ import { appConfigSchema } from './types'
 import { logger } from '@utils/logger'
 
 const parseEnv = () => {
-  const env = process.env.APP_ENV || 'development'
+  logger.info(process.env.APP_ENV)
+  const env = process.env.APP_ENV ?? 'development'
 
   if (env === 'development') {
     logger.info(`🔃 Loading environment variables from .env file`)
