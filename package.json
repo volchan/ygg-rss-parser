@@ -25,6 +25,7 @@
   "author": "",
   "license": "ISC",
   "devDependencies": {
+    "@prettier/plugin-pug": "^3.0.0",
     "@types/express": "^4.17.20",
     "@types/node": "^20.8.9",
     "@typescript-eslint/eslint-plugin": "^6.9.0",
@@ -32,6 +33,7 @@
     "eslint-config-airbnb-typescript": "^17.1.0",
     "eslint-config-prettier": "^9.0.0",
     "eslint-plugin-import": "^2.29.0",
+    "eslint-plugin-pug": "^1.2.5",
     "lint-staged": "^15.0.2",
     "nodemon": "^3.0.1",
     "prettier": "^3.0.3",
@@ -44,10 +46,12 @@
     "dotenv": "^16.3.1",
     "dotenv-parse-variables": "^2.0.0",
     "express": "^4.18.2",
+    "express-async-handler": "^1.2.0",
     "helmet": "^7.0.0",
     "husky": "^8.0.3",
     "pino-http": "^8.5.0",
     "pino-pretty": "^10.2.3",
+    "pug": "^3.0.2",
     "tsc-alias": "^1.8.8",
     "zod": "^3.22.4"
   }

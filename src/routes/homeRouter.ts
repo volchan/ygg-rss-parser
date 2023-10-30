@@ -1,9 +1,9 @@
-import express, { Request, Response } from 'express'
+import express from 'express'
+
+import homeController from '@controllers/homeController'
 
 const HomeRouter = express.Router()
 
-HomeRouter.get('/', function (req: Request, res: Response) {
-  res.send('Ygg Rss Parser')
-})
+HomeRouter.get('/', homeController.index)
 
 export default HomeRouter

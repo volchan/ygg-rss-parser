@@ -15,6 +15,7 @@
       "@routes/*": ["routes/*"],
       "@services/*": ["services/*"],
       "@utils/*": ["utils/*"],
+      "@views/*": ["./src/views/*"],
     }
   },
   "include": [

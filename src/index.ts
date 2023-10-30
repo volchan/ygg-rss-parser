@@ -1,17 +1,20 @@
 // import axios from 'axios'
 import helmet from 'helmet'
 import express from 'express'
+import path from 'path'
 // import { parse as pttParse, DefaultParserResult } from 'parse-torrent-title'
 // import { XMLParser } from 'fast-xml-parser'
 
-import { appEnv } from './config/env'
+import { appEnv } from '@config/env'
 import { loggerConfig, logger } from '@utils/logger'
-import AppRouter from './routes'
+import AppRouter from '@routes/index'
 
 const app = express()
 
 app.use(helmet())
 app.use(loggerConfig)
+app.set('view engine', 'pug')
+app.set('views', path.join(__dirname, 'views'))
 app.use(AppRouter)
 
 app.listen(appEnv.PORT, () => {
