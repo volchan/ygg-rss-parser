@@ -2,7 +2,9 @@ ignores: [
   "pino-pretty",
   "lint-staged",
   "ts-node",
-  "tsconfig-paths"
+  "tsconfig-paths",
+  "pug",
+  "@prettier/plugin-pug"
 ]
 
 skip-missing: true

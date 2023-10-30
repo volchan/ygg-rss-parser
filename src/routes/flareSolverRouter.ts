@@ -1,10 +1,10 @@
-import express, { Request, Response } from 'express'
+import express from 'express'
+
+import flareSolversController from '@controllers/flareSolversController'
 
 const FlareSolverRouter = express.Router()
 
-FlareSolverRouter.get('/', function (req: Request, res: Response) {
-  res.send('FlareSolver Router')
-})
+FlareSolverRouter.get('/', flareSolversController.index)
 
 export default FlareSolverRouter
 
