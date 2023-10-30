@@ -4,7 +4,9 @@ ignores: [
   "ts-node",
   "tsconfig-paths",
   "pug",
-  "@prettier/plugin-pug"
+  "@prettier/plugin-pug",
+  "@flydotio/dockerfile",
+  "rimraf"
 ]
 
 skip-missing: true

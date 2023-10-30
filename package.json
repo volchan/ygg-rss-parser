@@ -6,11 +6,11 @@
   "packageManager": "pnpm@8.10.0",
   "engines": {
     "node": "18.18.2",
-    "pnpm": "^7 || ^8"
+    "pnpm": "8.10.0"
   },
   "scripts": {
     "start": "nodemon -r tsconfig-paths/register src/index.ts",
-    "build": "tsc --project tsconfig.json && tsc-alias -p tsconfig.json",
+    "build": "rimraf ./dist && tsc --project tsconfig.json && tsc-alias -p tsconfig.json && tscp",
     "serve": "node dist/index.js",
     "prepare": "husky install",
     "depcheck": "pnpx depcheck",
@@ -25,6 +25,7 @@
   "author": "",
   "license": "ISC",
   "devDependencies": {
+    "@flydotio/dockerfile": "^0.4.10",
     "@prettier/plugin-pug": "^3.0.0",
     "@types/express": "^4.17.20",
     "@types/node": "^20.8.9",
@@ -34,12 +35,16 @@
     "eslint-config-prettier": "^9.0.0",
     "eslint-plugin-import": "^2.29.0",
     "eslint-plugin-pug": "^1.2.5",
+    "husky": "^8.0.3",
     "lint-staged": "^15.0.2",
     "nodemon": "^3.0.1",
     "prettier": "^3.0.3",
+    "rimraf": "^5.0.5",
     "ts-node": "^10.9.1",
+    "tsc-alias": "^1.8.8",
     "tsconfig-paths": "^4.2.0",
-    "typescript": "^5.2.2"
+    "typescript": "^5.2.2",
+    "typescript-cp": "^0.1.9"
   },
   "dependencies": {
     "@types/dotenv-parse-variables": "^2.0.2",
@@ -48,11 +53,9 @@
     "express": "^4.18.2",
     "express-async-handler": "^1.2.0",
     "helmet": "^7.0.0",
-    "husky": "^8.0.3",
     "pino-http": "^8.5.0",
     "pino-pretty": "^10.2.3",
     "pug": "^3.0.2",
-    "tsc-alias": "^1.8.8",
     "zod": "^3.22.4"
   }
 }

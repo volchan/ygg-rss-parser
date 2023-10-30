@@ -8,6 +8,7 @@
     "skipLibCheck": true,
     "forceConsistentCasingInFileNames": true,
     "baseUrl": "./src",
+    "rootDir": "./src",
     "paths": {
       "@config/*": ["config/*"],
       "@controllers/*": ["controllers/*"],
@@ -17,11 +18,5 @@
       "@utils/*": ["utils/*"],
       "@views/*": ["./src/views/*"],
     }
-  },
-  "include": [
-    "src/**/*.ts"
-  ],
-  "exclude": [
-    "node_modules"
-  ],
+  }
 }

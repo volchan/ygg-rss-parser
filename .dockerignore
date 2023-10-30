@@ -1,0 +1,45 @@
+# Logs
+logs
+*.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+lerna-debug.log*
+
+# Runtime data
+pids
+*.pid
+*.seed
+*.pid.lock
+
+# Dependency directories
+node_modules/
+.pnpm-store/
+
+# Optional eslint cache
+.eslintcache
+
+# Optional eslint coverage reports
+coverage/
+
+# Optional prettier cache
+.prettiercache
+
+# Environment variables
+.env
+.env.development
+.env.test
+.env.production
+
+# Build output
+build/
+dist/
+
+# Editor directories and files
+.idea/
+.vscode/
+*.suo
+*.ntvs*
+*.njsproj
+*.sln
+*.sw*
