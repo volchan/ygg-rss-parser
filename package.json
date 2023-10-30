@@ -12,7 +12,7 @@
     "start": "nodemon -r tsconfig-paths/register src/index.ts",
     "build": "rimraf ./dist && tsc --project tsconfig.json && tsc-alias -p tsconfig.json && tscp",
     "serve": "node dist/index.js",
-    "prepare": "husky install",
+    "prepare": "pnpx husky install",
     "depcheck": "pnpx depcheck",
     "lint": "pnpm eslint && pnpm prettier",
     "lint:fix": "pnpm eslint:fix && pnpm prettier:fix",
